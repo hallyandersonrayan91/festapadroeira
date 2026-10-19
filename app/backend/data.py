@@ -1,0 +1,118 @@
+"""Dados de referência: setores e capelas da Festa da Padroeira 2026."""
+
+# Mapeamento setor -> lista de capelas
+SETORES_CAPELAS = {
+    "SÃO JOÃO PAULO II": [
+        "CASA DE ORAÇÃO N. SENHORA DAS GRAÇAS",
+        "NOSSA SENHORA DA SAÚDE",
+        "NOSSA SENHORA DAS GRAÇAS",
+        "NOSSA SENHORA DE FATIMA",
+        "NOSSA SENHORA MÃE DOS HOMENS",
+    ],
+    "SANTA TEREZA D’ÁVILA": [
+        "NOSSA SENHORA APARECIDA/BOA VISTA",
+        "NOSSA SENHORA DO ROSÁRIO/MATÃO DOS NUNES",
+        "SÃO PEDRO/BELA VISTA",
+        "SÃO PEDRO/BELA VISTA (POR TRÁS DO BANZAY)",
+    ],
+    "SANTA CATARINA DE SENA": [
+        "MÃE RAINHA/VILA VERDE",
+        "NOSSA SENHORA DO CARMO/ ADELINO FERNANDES",
+        "SANTO ANTONIO DE PÁDUA/PLANALTO",
+        "SÃO COSME E SÃO DAMIÃO/ALEXANDRE CÂMARA",
+        "SÃO JOÃO BATISTA/COHAB",
+    ],
+    "S. TEREZINA DO MENINNO JESUS": [
+        "NOSSA SENHORA DAS DORES/VILA NOVA",
+        "NOSSA SENHORA DO PERPETUO SOCORRO/GAFURINGA",
+        "NOSSA SENHORA DO PERPETUO SOCORRO/SEAC",
+        "SÃO FRANCISCO DE ASSIS/SÃO FRANCISCO",
+        "SÃO SEBASTIÃO/CORTE",
+    ],
+    "SANTA ROSA DE LIMA": [
+        "SÃO FRANCISCO DE ASSIS/ PINTOMBEIRA",
+        "SÃO FRANCISCO DE ASSIS/RIACHO DA FAZENDA",
+        "SÃO FRANCISCO DE ASSIS/RIACHO FUNDO",
+        "SÃO FRANCISCO DE ASSIS/VALENTIM",
+        "SÃO SEBASTIÃO/ARISCO",
+        "SÃO SEBASTIÃO/CAUAÇU",
+    ],
+    "SANTO ANDRÉ DE SOVERAL": [
+        "SANTO ANTONIO DE PÁDUA/LADEIRA GRANDE",
+        "SANTO EXPEDITO/ PASSAGEM DOS CABOCLOS",
+    ],
+    "BEATA BARBARA MAIX": [
+        "N. SENHORA DESTADORA DOS NÓS/ PROJETO AÇUCENA",
+        "SANTA TEREZINHA DO MENINO JESUS/ASS.SANTA TEREZINHA",
+        "SÃO BENTO/SERROTE SÃO BENTO",
+        "SÃO FRANCISCO ASSIS/ AMARELÃO",
+    ],
+    "SANTA RITA DE CASSIA": [
+        "SÃO JOÃO BATISTA/BRINCO DE OURO",
+        "SÃO JOSÉ/QUEIMADAS",
+        "SÃO SEBASTIÃO/TUBIBAS",
+    ],
+    "SÃO MATEUS MOREIRA": [
+        "NOSSA SENHORA APARECIDA/BAIXA DO NOVILHO",
+        "NOSSA SENHORA RAINHA DA PAZ/MARIA DA PAZ",
+        "SANTA LUZIA/MODELO II",
+        "SÃO SEBATIÃO/MODELO I",
+    ],
+    "SANTA PAULINA": [
+        "SANTA RITA DE CASSIA/ CAJUEIRO",
+        "SANTO ANTONIO DE PÁDUA/ BREJINHO II",
+        "SANTO ANTONIO DE PÁDUA/BREJINHO I",
+        "SÃO JOSÉ/MORADA NOVA",
+    ],
+    "SANTA TEREZA BENEDITA DA CRUZ": [
+        "NOSSA SENHORA DA ASSUNÇÃO",
+        "SANTA LUZIA/SANTA LUZIA, III",
+        "SANTA’ANA /CHICO SANTANA",
+        "SÃO SEBASTIÃO/ASSENTAMENTO LAGEADO",
+    ],
+    "SÃO JOSÉ DE ANCHIETA": [
+        "NOSSA SENHORA PERRPETUO SOCORRO/MATÃO DE JÓ",
+        "SANTA LUZIA/MATÃO JOANA BATISTA",
+        "SÃO SEBASTIÃO/MATÃO DE ARISTIDE",
+    ],
+    "SÃO VICENTE DE PAULO": [
+        "NOSSA SENHORA DE FATIMA/MARAJÓ",
+        "SANTA’ANA/XOÁ",
+        "SÃO JOÃO BATISTA/IPÊ SERRA VERDE",
+        "SÃO SEBATIÃO/BOA SORTE",
+    ],
+    "SANTO AGOSTINHO DE HIPONA": [
+        "NOSSA SENHORA DAS GRAÇAS/NOVA DESCOBERTA",
+        "NOSSA SENHORA DE FATIMA/SERRINHA DE CIMA",
+        "SANTA LUZIA/SANTA LUIZIA DOS PULINOS",
+        "SANTO EXPEDITO/VIVARÁ",
+        "SÃO FRANCISCO DE ASSIS/AGOVILA SÃO JOSÉ",
+        "SÃO JOSÉ/SERRINHA DE BIAXO",
+    ],
+    "SANTO AGOTINHO DE HIPONA": [
+        "NOSSA SENHORA DE LOURDES/POVOADO CATOLÊ",
+    ],
+    "SANTA MÔNICA": [
+        "NOSSA SENHORA DE FATIMA/ZÉ DE ARAÚJO",
+        "SAGRADO CORAÇÃO DE JESUS/FAZENDA NOVA",
+        "SANTA LUZIA/SANTOMÉ",
+        "SANTO ANTONIO DE PÁDUA/ARRIAL DOS BALBINOS",
+        "SÃO JOÃO BATISTA",
+    ],
+}
+
+
+def list_setores():
+    return [
+        {"setor": s, "capelas": caps, "total_capelas": len(caps)}
+        for s, caps in SETORES_CAPELAS.items()
+    ]
+
+
+def list_capelas():
+    items = []
+    for setor, capelas in SETORES_CAPELAS.items():
+        for cap in capelas:
+            items.append({"capela": cap, "setor": setor})
+    items.sort(key=lambda x: x["capela"])
+    return items
